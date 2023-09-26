@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InscriptionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('/inscription')->controller(InscriptionController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::post('/createStudent', 'createStudent')->name('createStudent');
+})->name('inscription');
+
+Route::get('/list', [(InscriptionController::class), 'studentsList'])->name('studentsList');
