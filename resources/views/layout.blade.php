@@ -16,7 +16,7 @@
 
 <body>
     <div class="d-flex flex-row">
-        <div class="vertical-nav" id="sidebar" style="background: #e2e8f0; width: 17rem; min-height: 100vh;">
+        <div class="border-right border-2" id="sidebar" style="background: #e2e8f0; width: 17rem; min-height: 100vh; border-right: 4px double #dee2e6;">
             <div class="p-4 mb-4">
                 <h1 class="text-primary fs-3 mt-4 fw-semibold">Menu</h1>
             </div>
@@ -29,9 +29,16 @@
                 </li>
             </ul>
         </div>
-        <main class="container">
-            @yield('content')
-        </main>
+        <div style="width: 100%; padding: 20px 0;">
+            <div class="text-center pb-5 border-bottom border-2">
+                <h2>REPUBLIQUE DU BENIN</h2>
+                <h5>MINISTERE DE L'ENSEIGNEMENT SUPERIEUR ET DE LA RECHERCHE SCIENTIFIQUE (M.E.S.R.S) </h5>
+                <h5>DIRECTION DES EXAMENS ET CONCOURS (D.E.C) </h5>
+            </div>
+            <main class="container">
+                @yield('content')
+            </main>
+        </div>
     </div>
 </body>
 

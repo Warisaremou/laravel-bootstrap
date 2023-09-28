@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('infoDEC');
 });
 
 Auth::routes();
@@ -29,3 +29,5 @@ Route::prefix('/inscription')->controller(InscriptionController::class)->group(f
 })->name('inscription');
 
 Route::get('/list', [(InscriptionController::class), 'studentsList'])->name('studentsList');
+Route::get('/search', [(InscriptionController::class), 'findStudentByOption'])->name('findStudentByOption');
+Route::delete('/delete/{studentID}', [(InscriptionController::class), 'deleteStudent'])->name('deleteStudent');

@@ -16,8 +16,8 @@
                         <div class="col-md-6">
                             <input id="nom" type="text" class="form-control @error('nom') is-invalid @enderror" name="nom" autofocus>
                             @error('nom')
-                            <span class="invalid-feedback text-start fw-light" role="alert">
-                                <strong>{{ $message }}</strong>
+                            <span class="invalid-feedback text-start" role="alert">
+                                <p>{{ $message }}</p>
                             </span>
                             @enderror
                         </div>
@@ -29,8 +29,8 @@
                         <div class="col-md-6">
                             <input id="prenom" type="text" class="form-control @error('prenom') is-invalid @enderror" name="prenom" autofocus>
                             @error('prenom')
-                            <span class="invalid-feedback text-start fw-light" role="alert">
-                                <strong>{{ $message }}</strong>
+                            <span class="invalid-feedback text-start" role="alert">
+                                <p>{{ $message }}</p>
                             </span>
                             @enderror
                         </div>
@@ -41,8 +41,8 @@
                         <div class="col-md-6">
                             <input id="datnais" type="date" class="form-control @error('datnais') is-invalid @enderror" name="datnais" autofocus>
                             @error('datnais')
-                            <span class="invalid-feedback text-start fw-light" role="alert">
-                                <strong>{{ $message }}</strong>
+                            <span class="invalid-feedback text-start" role="alert">
+                                <p>{{ $message }}</p>
                             </span>
                             @enderror
                         </div>
@@ -53,8 +53,8 @@
                         <div class="col-md-6">
                             <input id="ville" type="text" class="form-control @error('ville') is-invalid @enderror" name="ville" autofocus>
                             @error('ville')
-                            <span class="invalid-feedback text-start fw-light" role="alert">
-                                <strong>{{ $message }}</strong>
+                            <span class="invalid-feedback text-start" role="alert">
+                                <p>{{ $message }}</p>
                             </span>
                             @enderror
                         </div>
@@ -87,8 +87,8 @@
                                     @endforeach
                                 </select>
                                 @error('option_id')
-                                <span class="invalid-feedback text-start fw-light" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                <span class="invalid-feedback text-start" role="alert">
+                                    <p>{{ $message }}</p>
                                 </span>
                                 @enderror
                             </div>
@@ -103,8 +103,7 @@
             </div>
             @if(session('success'))
             <div class="alert alert-success col-md-5 mx-auto" role="alert">
-                <!-- {{session('success ')}} -->
-                L'étudiant à été enrégistrer avec succès
+                L'étudiant a été enrégistrer avec succès
             </div>
             @endif
         </div>

@@ -11,7 +11,7 @@ class InscriptionController extends Controller
 {
     public function index(): View
     {
-        return view('etudiant.inscription', [
+        return view('etudiant.inscriptionDEC', [
             'options' => Option::all(['id', 'code_opt', 'nom_opt'])
         ]);
     }
@@ -41,15 +41,35 @@ class InscriptionController extends Controller
 
     public function studentsList(): View
     {
-        return view('etudiant.list', [
-            'students' => Etudiant::all(['id', 'nom', 'prenom', 'sexe'])
+        return view('etudiant.rechercheDEC', [
+            'students' => Etudiant::all(['id', 'nom', 'prenom', 'sexe', 'option_id']),
+            'options' => Option::all(['id', 'code_opt']),
+            'filteredStudents' => null
         ]);
     }
 
-    // public function deleteStudent(Request $request)
-    // {
-    //     Etudiant::delete($request->'id');
+    public function findStudentByOption(Request $request)
+    {
+        $request->validate([
+            'option_id' => 'required|int',
+        ]);
+        // dd($request->option_id;
+        $students = Etudiant::query()->where('option_id', 'LIKE', '%' . $request->option_id . '%')->get();
+        // dd($students);
 
-    //     return;
-    // }
+        return
+            view('etudiant.rechercheDEC', [
+                'students' => $students,
+                'options' => Option::all(['id', 'code_opt']),
+            ]);
+    }
+
+    public function deleteStudent(int $studentID)
+    {
+        // @dd($studentID);
+        Etudiant::destroy($studentID);
+
+        return
+            redirect()->route('studentsList')->with('delete', "L'étudiant à été supprimé avec succès");
+    }
 }
