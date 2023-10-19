@@ -62,6 +62,7 @@
                             @csrf
                             <button type="submit" class="dropdown-item text-danger">Supprimer</button>
                         </form>
+                        <button class="dropdown-item text-primary">Modifier</button>
                     </ul>
                 </td>
             </tr>

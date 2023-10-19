@@ -26,8 +26,10 @@ Auth::routes();
 Route::prefix('/inscription')->controller(InscriptionController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::post('/createStudent', 'createStudent')->name('createStudent');
+    Route::get('/editStudent', 'editStudentForm')->name('editStudentForm');
 })->name('inscription');
 
 Route::get('/list', [(InscriptionController::class), 'studentsList'])->name('studentsList');
 Route::get('/search', [(InscriptionController::class), 'findStudentByOption'])->name('findStudentByOption');
 Route::delete('/delete/{studentID}', [(InscriptionController::class), 'deleteStudent'])->name('deleteStudent');
+Route::put('/edit/{studentID}', [(InscriptionController::class), 'editStudent'])->name('editStudent');

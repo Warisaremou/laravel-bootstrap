@@ -57,6 +57,8 @@ class InscriptionController extends Controller
         $students = Etudiant::query()->where('option_id', 'LIKE', '%' . $request->option_id . '%')->get();
         // dd($students);
 
+        // ! Add code if student not found later
+
         return
             view('etudiant.rechercheDEC', [
                 'students' => $students,
@@ -71,5 +73,18 @@ class InscriptionController extends Controller
 
         return
             redirect()->route('studentsList')->with('delete', "L'étudiant à été supprimé avec succès");
+    }
+
+    public function editStudentForm(): View
+    {
+        return view('etudiant.modificationDEC', [
+            'options' => Option::all(['id', 'code_opt', 'nom_opt'])
+        ]);
+    }
+
+    public function editStudent(Request $request, string $id)
+    {
+
+        dd($request, $id);
     }
 }
