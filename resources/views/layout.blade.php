@@ -15,17 +15,22 @@
 </head>
 
 <body>
+
+    @php
+     $routeName = request()->route()->getName();
+    @endphp
+
     <div class="d-flex flex-row">
         <div class="border-right border-2" id="sidebar" style="background: #e2e8f0; width: 17rem; min-height: 100vh; border-right: 4px double #dee2e6;">
             <div class="p-4 mb-4">
-                <h1 class="text-primary fs-3 mt-4 fw-semibold">Menu</h1>
+                <h1 class="fs-3 mt-4 fw-semibold">Menu</h1>
             </div>
             <ul class="nav flex-column px-3">
                 <li class="nav-item">
-                    <a href="inscription" class="nav-link py-3 active text-dark fw-bold">Inscription</a>
+                    <a href="{{route('index')}}" class="nav-link py-3 @if($routeName == 'index') active bg-primary rounded-3 text-white @else text-dark  @endif">Inscription</a>
                 </li>
                 <li class="nav-item">
-                    <a href="list" class="nav-link py-3 text-dark fw-bold">Liste des etudiants</a>
+                    <a href="{{route('studentsList')}}" class="nav-link py-3 @if($routeName == 'studentsList' || $routeName == 'findStudentByOption') active bg-primary rounded-3 text-white @else text-dark  @endif">Liste des etudiants</a>
                 </li>
             </ul>
         </div>
@@ -40,6 +45,7 @@
             </main>
         </div>
     </div>
+    {{-- @dump(request()->route()->getName()); --}}
 </body>
 
 </html>

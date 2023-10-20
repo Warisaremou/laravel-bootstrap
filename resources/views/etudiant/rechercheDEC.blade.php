@@ -62,13 +62,20 @@
                             @csrf
                             <button type="submit" class="dropdown-item text-danger">Supprimer</button>
                         </form>
-                        <button class="dropdown-item text-primary">Modifier</button>
+                        <button class="dropdown-item text-primary">
+                            <a class="nav-link" href="{{route('editStudentForm', [$student])}}">Modifier</a>
+                        </button>
                     </ul>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+
+    {{-- @dump(count($students)); --}}
+    @if (count($students) > 6)
+        {{ $students->links() }}
+    @endif
 
     @if(session('delete'))
     <div class="alert alert-danger col-md-5 mx-auto fw-light" role="alert">

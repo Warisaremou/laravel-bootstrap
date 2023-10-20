@@ -42,9 +42,10 @@ class InscriptionController extends Controller
     public function studentsList(): View
     {
         return view('etudiant.rechercheDEC', [
-            'students' => Etudiant::all(['id', 'nom', 'prenom', 'sexe', 'option_id']),
+            'students' => Etudiant::paginate(6),
+            // 'students' => Etudiant::all(['id', 'nom', 'prenom', 'sexe', 'option_id']),
             'options' => Option::all(['id', 'code_opt']),
-            'filteredStudents' => null
+            // 'filteredStudents' => null
         ]);
     }
 
@@ -93,7 +94,7 @@ class InscriptionController extends Controller
             'sexe' => 'required|min:1|max:1',
             'option_id' => 'required',
         ]);
-        
+
         $etudiant->update([
             'nom' => $request->input('nom'),
             'prenom' => $request->input('prenom'),
