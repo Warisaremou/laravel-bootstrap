@@ -72,7 +72,12 @@
 
     @if(session('delete'))
     <div class="alert alert-danger col-md-5 mx-auto fw-light" role="alert">
-        L'étudiant a été supprimer avec succès
+        {{ session('delete')}}
+    </div>
+
+    @endif @if(session('success'))
+    <div class="alert alert-success col-md-5 mx-auto fw-light" role="alert">
+        {{ session('success')}}
     </div>
     @endif
 </div>

@@ -36,7 +36,7 @@ class InscriptionController extends Controller
             'option_id' => $request->input('option_id'),
         ]);
 
-        return redirect()->route('index')->with('success', "L'étudiant à été enrégistrer avec succès");
+        return redirect()->route('index')->with('success', "L'étudiant a été enrégistré avec succès");
     }
 
     public function studentsList(): View
@@ -75,16 +75,34 @@ class InscriptionController extends Controller
             redirect()->route('studentsList')->with('delete', "L'étudiant à été supprimé avec succès");
     }
 
-    public function editStudentForm(): View
+    public function editStudentForm(Etudiant $etudiant): View
     {
         return view('etudiant.modificationDEC', [
+            'etudiant' => $etudiant,
             'options' => Option::all(['id', 'code_opt', 'nom_opt'])
         ]);
     }
 
-    public function editStudent(Request $request, string $id)
+    public function editStudent(Etudiant $etudiant, Request $request)
     {
+        $request->validate([
+            'nom' => 'required|min:2|max:50',
+            'prenom' => 'required|min:2|max:50',
+            'datnais' => 'required',
+            'ville' => 'required|min:3|max:50',
+            'sexe' => 'required|min:1|max:1',
+            'option_id' => 'required',
+        ]);
+        
+        $etudiant->update([
+            'nom' => $request->input('nom'),
+            'prenom' => $request->input('prenom'),
+            'datnais' => $request->input('datnais'),
+            'ville' => $request->input('ville'),
+            'sexe' => $request->input('sexe'),
+            'option_id' => $request->input('option_id'),
+        ]);
 
-        dd($request, $id);
+        return redirect()->route('studentsList')->with('success', "L'étudiant a été modifié avec succès");
     }
 }

@@ -103,7 +103,7 @@
             </div>
             @if(session('success'))
             <div class="alert alert-success col-md-5 mx-auto" role="alert">
-                L'étudiant a été enrégistrer avec succès
+                {{ session('success')}}
             </div>
             @endif
         </div>
